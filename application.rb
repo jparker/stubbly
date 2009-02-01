@@ -15,19 +15,20 @@ end
 # TODO:
 # - list of most popular stubbles on main page
 
-# Front page
 get '/' do
   haml :index
 end
 
-# Lookup existing stubbly url
+get '/about.html' do
+  haml :about
+end
+
 get '/:slug' do
   @stubble = Stubble.get_by_slug!(params[:slug])
   @stubble.url
   # redirect @stubble.url
 end
 
-# Create new stubbly url
 post '/' do
   @stubble = Stubble.new(:url => params[:url])
   @stubble.save
