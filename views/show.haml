@@ -1,0 +1,23 @@
+!!! XML
+!!!
+%html{:xmlns => 'http://www.w3.org/1999/xhtml', :'xml-lang' => 'en', :lang => 'en'}
+  %head
+    %meta{:'http-equiv' => 'Content-Type', :content => 'text/html;charset=UTF-8'}
+    %title stubbly &ndash; itsy-bitsy teenie-weenie urls
+    = stylesheet_tag '/screen.css'
+    = stylesheet_tag '/print.css', :media => 'print'
+    /[if IE]
+      = stylesheet_tag '/ie.css'
+    = stylesheet_tag '/stubbly.css'
+  %body
+    .container
+      #hd.span-24
+        %h1 stubbly &ndash; itsty-bitsy teenie-weenie urls
+      #bd.span-24
+        %p
+          %strong.highlight= @stubble.url
+      #ft.span-24
+        %p
+          an
+          %a{:href => 'http://urgetopunt.com/'} urge|to|punt
+          technology
