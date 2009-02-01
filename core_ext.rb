@@ -1,5 +1,5 @@
 module Sluggish
-  DIGITS = ('0'..'9').to_a + ('a'..'z').to_a + ('A'..'Z').to_a + %w(- .)
+  DIGITS = ('0'..'9').to_a + ('a'..'z').to_a + ('A'..'Z').to_a + %w(- _)
 end
 
 class Fixnum
@@ -22,11 +22,5 @@ class String
     end
   rescue
     raise "can't convert from base64 (#{self.inspect})"
-  end
-end
-
-class Flash < Hash
-  def [](key)
-    delete(key)
   end
 end

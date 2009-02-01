@@ -1,6 +1,6 @@
 !!! XML
 !!!
-%html{:xmlns => 'http://www.w3.org/1999/xhtml', :'xml-lang' => 'en', :lang => 'en'}
+%html{:xmlns => 'http://www.w3.org/1999/xhtml'}
   %head
     %meta{:'http-equiv' => 'Content-Type', :content => 'text/html;charset=UTF-8'}
     %title stubbly &ndash; itsy-bitsy teenie-weenie urls
@@ -14,20 +14,19 @@
       #head.span-24
         %h1= link_to 'stubbly &ndash; itsy-bitsy teenie-weenie urls', '/'
       #body.span-24
-        .span-18
-          .prepend-top
-            = yield
-        .span-6.last
-          .prepend-top
+        .span-16
+          #new-stubble.prepend-top
             %form{:method => 'post', :action => '/'}
-              %input{:type => 'text', :name => 'url', :class => 'span-4'}
-              %button{:type => 'submit', :class => 'span-2'} Stubblize
-          #recent
+              %input{:type => 'text', :name => 'url', :class => 'span-12'}
+              %button{:type => 'submit', :class => 'span-3'} Stubblize
+          = yield
+        .span-8.last
+          #recent.prepend-top
             - unless @stubbles.nil? || @stubbles.empty?
               %h2 Recent Stubbles
               %dl
                 - @stubbles.each do |stubble|
-                  %dt= link_to truncate(stubble.url, 42), "/#{stubble.slug}", :title => stubble.url
+                  %dt= link_to CGI::escapeHTML(truncate(stubble.url, 42)), "/#{stubble.slug}.html", :title => 'Click to see preview'
                   %dd= stubble.created_at.strftime('%c')
         .span-24
       #foot.span-24

@@ -1,4 +1,5 @@
 body {
+  background-color: #ccc;
   font-family: Georgia;
   font-size: 16px;
 }
@@ -11,8 +12,10 @@ a:hover {
 ul {
   list-style-type: none;
 }
-.url {
-  font-family: "Helvetica Neue";
+.container {
+  background-color: #fff;
+  border: 2px solid #999;
+  padding: 2em;
 }
 
 h1 a {
@@ -27,6 +30,40 @@ h1 a {
 }
 #body ul {
   margin: 1em 2em;
+}
+#body dl {
+  margin-top: 1em;
+}
+#body dt {
+  margin: 1em 0 0 0;
+}
+#head {
+  border-bottom: 1px solid #ccc;
+}
+#foot {
+  border-top: 1px solid #ccc;
+  margin-top: 1em;
+  padding-top: 1em;
+}
+#foot p {
+  color: #aaa;
+  font-size: 12px;
+}
+#foot a {
+  color: #aaa;
+}
+#foot a:hover {
+  color: #000;
+}
+#new-stubble {
+  text-align: center;
+}
+#new-stubble input, #new-stubble button {
+  font-size: 16px;
+  padding: 0.25em;
+}
+#new-stubble input:focus {
+  background-color: #cdf;
 }
 #recent dl {
   font-family: "Helvetica Neue";
@@ -51,22 +88,4 @@ h1 a {
   margin: 1em 0;
   padding-bottom: 0.5em;
   text-align: center;
-}
-#head {
-  border-bottom: 1px solid #ccc;
-}
-#foot {
-  border-top: 1px solid #ccc;
-  margin-top: 1em;
-  padding-top: 1em;
-}
-#foot p {
-  color: #aaa;
-  font-size: 12px;
-}
-#foot a {
-  color: #aaa;
-}
-#foot a:hover {
-  color: #000;
 }

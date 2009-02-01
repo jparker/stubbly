@@ -1,4 +1,5 @@
 require 'rubygems'
+require 'cgi'
 require 'sinatra'
 require 'stubble'
 
@@ -26,13 +27,17 @@ end
 get '/:slug' do
   @stubble = Stubble.get_by_slug!(params[:slug])
   @stubble.url
-  # redirect @stubble.url
+end
+
+get '/:slug.html' do
+  @stubble = Stubble.get_by_slug!(params[:slug])
+  haml :show
 end
 
 post '/' do
   @stubble = Stubble.new(:url => params[:url])
   @stubble.save
-  haml :show
+  redirect "/#{@stubble.slug}.html"
 end
 
 helpers do
@@ -43,15 +48,19 @@ helpers do
   end
   
   def link_to(text, url, options = {})
-    options.merge!(:href => url)
+    options.merge!(:href => h(url))
     %Q{<a #{options.map {|k,v| %Q{#{k}="#{v}"} }.join(' ')}>#{text}</a>}
   end
   
-  def truncate(text, length = 30)
-    text.length <= length ? text : "#{text[0,length]}&hellip;"
+  def h(text)
+    CGI::escapeHTML(text)
   end
   
-  def flash
-    session[:flash] ||= Flash.new
+  def truncate(text, length = 30)
+    text.length <= length ? text : "#{text[0,length]}..."
+  end
+  
+  def wrap(text, length = 72)
+    text.scan(/.{1,length}/).join('&nbsp;')
   end
 end

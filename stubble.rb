@@ -34,4 +34,12 @@ class Stubble
   def slug
     id.to_base64
   end
+  
+  def slug_url(base = 'http://stubbly.local/')
+    "#{base}/#{slug}"
+  end
+  
+  def stubbliness
+    (100 - 100.0 * slug_url.size / url.size)
+  end
 end

@@ -1,11 +1,10 @@
 - unless @stubble.new_record?
-  %p
-    Your new stubble is
-    %span.url= link_to('http://stubbly.local/' + @stubble.slug, @stubble.slug)
-  %p
-    The original URL was
-    %span.url= link_to(@stubble.url, @stubble.url)
-  %p
-    The stubble is
-    = '%.0f%%' % [100 - ("http://stubbly.local/#{@stubble.slug}".size.to_f / @stubble.url.size * 100)]
-    shorter than the original!
+  %dl
+    %dt Stubble
+    %dd= link_to h("http://stubbly.local/#{@stubble.slug}"), @stubble.slug
+    
+    %dt Original URL
+    %dd= link_to h(@stubble.url), @stubble.url
+    
+    %dt Stubbliness
+    %dd= '%.0f%% shorter' % @stubble.stubbliness
