@@ -7,5 +7,5 @@ Sinatra::Application.default_options.merge!(
   :views => File.join(File.dirname(__FILE__), 'views')
 )
 
-require 'stubbly'
+require 'application'
 run Sinatra.application

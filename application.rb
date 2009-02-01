@@ -2,23 +2,17 @@ require 'rubygems'
 require 'sinatra'
 require 'stubble'
 
+enable :sessions
+
+error DataMapper::ObjectNotFoundError do
+  "Wowzers: #{request.env['sinatra.error']}"
+end
+
 before do
-  hsh = {}
-  request.params.each do |key, value|
-    this = hsh
-    keys = key.split(/\]\[|\]|\[/)
-    keys.each_index do |i|
-      break if keys.length == i + 1
-      this[keys[i]] ||= {}
-      this = this[keys[i]]
-    end
-    this[keys[-1]] = value
-  end
-  request.params.replace hsh
+  @stubbles = Stubble.recent(15)
 end
 
 # TODO:
-# - list of recent stubbles on main page
 # - list of most popular stubbles on main page
 
 # Front page
@@ -27,19 +21,17 @@ get '/' do
 end
 
 # Lookup existing stubbly url
-get '/*' do
-  @stubble = Stubble.get!(params['splat'][0].to_i(36))
-  haml :show
+get '/:slug' do
+  @stubble = Stubble.get_by_slug!(params[:slug])
+  @stubble.url
+  # redirect @stubble.url
 end
 
 # Create new stubbly url
 post '/' do
-  @stubble = Stubble.new(params[:stubble])
-  if @stubble.save
-    redirect '/'
-  else
-    haml :index
-  end
+  @stubble = Stubble.new(:url => params[:url])
+  @stubble.save
+  haml :show
 end
 
 helpers do
@@ -48,9 +40,17 @@ helpers do
     options[:media] ||= 'screen,projection'
     %Q{<link #{options.map {|k,v| %Q{#{k}="#{v}"} }.join(' ')} />}
   end
-
+  
   def link_to(text, url, options = {})
     options.merge!(:href => url)
     %Q{<a #{options.map {|k,v| %Q{#{k}="#{v}"} }.join(' ')}>#{text}</a>}
+  end
+  
+  def truncate(text, length = 30)
+    text.length <= length ? text : "#{text[0,length]}&hellip;"
+  end
+  
+  def flash
+    session[:flash] ||= Flash.new
   end
 end

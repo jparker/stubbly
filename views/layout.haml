@@ -1,0 +1,40 @@
+!!! XML
+!!!
+%html{:xmlns => 'http://www.w3.org/1999/xhtml', :'xml-lang' => 'en', :lang => 'en'}
+  %head
+    %meta{:'http-equiv' => 'Content-Type', :content => 'text/html;charset=UTF-8'}
+    %title stubbly &ndash; itsy-bitsy teenie-weenie urls
+    = stylesheet_tag '/screen.css'
+    = stylesheet_tag '/print.css', :media => 'print'
+    /[if IE]
+      = stylesheet_tag '/ie.css'
+    = stylesheet_tag '/stubbly.css'
+  %body
+    .container
+      #head.span-24
+        %h1= link_to 'stubbly &ndash; itsy-bitsy teenie-weenie urls', '/'
+      #body.span-24
+        .span-18
+          .prepend-top
+            = yield
+        .span-6.last
+          .prepend-top
+            %form{:method => 'post', :action => '/'}
+              %input{:type => 'text', :name => 'url', :class => 'span-4'}
+              %button{:type => 'submit', :class => 'span-2'} Stubblize
+          #recent
+            - unless @stubbles.nil? || @stubbles.empty?
+              %h2 Recent Stubbles
+              %dl
+                - @stubbles.each do |stubble|
+                  %dt= link_to truncate(stubble.url, 42), "/#{stubble.slug}", :title => stubble.url
+                  %dd= stubble.created_at.strftime('%c')
+        .span-24
+      #foot.span-24
+        %p
+          an
+          = link_to 'urge|to|punt', 'http://urgetopunt.com/'
+          technology |
+          &copy;
+          = Date.today.year
+          John Parker

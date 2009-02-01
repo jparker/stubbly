@@ -1,63 +1,22 @@
-!!! XML
-!!!
-%html{:xmlns => 'http://www.w3.org/1999/xhtml', :'xml-lang' => 'en', :lang => 'en'}
-  %head
-    %meta{:'http-equiv' => 'Content-Type', :content => 'text/html;charset=UTF-8'}
-    %title stubbly &ndash; itsy-bitsy teenie-weenie urls
-    = stylesheet_tag '/screen.css'
-    = stylesheet_tag '/print.css', :media => 'print'
-    /[if IE]
-      = stylesheet_tag '/ie.css'
-    = stylesheet_tag '/stubbly.css'
-  %body
-    .container
-      #head.span-24
-        %h1 stubbly &ndash; itsy-bitsy teenie-weenie urls
-      #body.span-24
-        %form{:method => 'post', :action => '/'}
-          %input{:type => 'text', :name => 'stubble[url]'}
-          %input{:type => 'submit', :value => 'Stubblize'}
-        %h2 What is Stubbly?
-        %p
-          Stubbly is a URL-shortener. Suppose you want to send someone a link
-          to a Google map of the location of a fancy hotel in Wellington. You
-          could paste the following URL (straight from the imagination of Mary
-          Shelley) into your message:
-        %blockquote
-          %a{:href => 'http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=2+Grey+St,+Wellington,+6011,+New+Zealand&sll=32.725637,-117.170506&sspn=0.009802,0.018668&ie=UTF8&ll=-41.284692,174.776559&spn=0.00441,0.009946&z=17&iwloc=addr'} http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=2+Grey+St,+Wellington,+6011,+New+Zealand&amp;sll=32.725637,-117.170506&amp;sspn=0.009802,0.018668&amp;ie=UTF8&amp;ll=-41.284692,174.776559&amp;spn=0.00441,0.009946&amp;z=17&amp;iwloc=addr
-        %p
-          Or you could be a kinder, gentler person and paste something a wee
-          bit shorter, say,
-        %blockquote
-          %a{:href => 'http://stubb.ly/1'} http://stubb.ly/1
-        %h2 Hasn't This Been Done?
-        %p
-          Yes. This application is shamelessly whipping an old horse that
-          died ages ago. Seriously. The poor beast's carcass has practically
-          disintegrated. There are a number of alternative URL shorteners
-          available today. Here's just a few:
-        %ul
-          %li= link_to 'tinyurl.com', 'http://tinyurl.com/'
-          %li= link_to 'rubyurl.com', 'http://rubyurl.com/'
-          %li= link_to 'bit.ly', 'http://bit.ly/'
-          %li= link_to 'is.gd', 'http://is.gd/'
-        %p
-          That's just a few of them, and everyone of them is almost certainly
-          superior to Stubbly. Stubbly came into existence strictly as a way
-          for me to brush up on some new technology.
-        %h2 How is Stubbly Implemented?
-        %p
-          Stubbly is a
-          = link_to 'Sinatra', 'http://sinatra.rubyforge.org/'
-          +
-          = link_to 'DataMapper', 'http://datamapper.org/'
-          application. Sinatra is an extremely lightweight, ruby-based web
-          application framework, and DataMapper is a lean, fast and clever
-          ruby-based object relational mapper. Stubbly itself is an
-          = link_to 'open source', 'http://github.com/jparker/stubbly/'
-          application.
-      #foot.span-24
-        %p
-          an
-          = link_to 'urge|to|punt', 'http://urgetopunt.com/'
-          technology
+%h2 What is Stubbly?
+%p
+  Stubbly generates conveniently short aliases for inconveniently
+  long URLs.
+%h2 Hasn&rsquo;t This Been Done?
+%p
+  Yes. Here&lsquo;s a few services that are older, wiser and better-looking:
+%ul
+  %li= link_to 'tinyurl.com', 'http://tinyurl.com/'
+  %li= link_to 'rubyurl.com', 'http://rubyurl.com/'
+  %li= link_to 'bit.ly', 'http://bit.ly/'
+  %li= link_to 'is.gd', 'http://is.gd/'
+%h2 What Powers Stubbly?
+%ul
+  %li= link_to 'Sinatra', 'http://sinatra.rubyforge.org/'
+  %li= link_to 'DataMapper', 'http://datamapper.org/'
+  %li= link_to 'MySQL', 'http://www.mysql.com/'
+  %li= link_to 'Apache', 'http://httpd.apache.org/'
+  %li= link_to 'Passenger', 'http://www.phusion.nl/'
+%p
+  Stubbly is an open source project. The code is publicly available on
+  = link_to('Github', 'http://github.com/jparker/stubbly/') + '.'

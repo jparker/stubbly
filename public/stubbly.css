@@ -1,1 +1,72 @@
+body {
+  font-family: Georgia;
+  font-size: 16px;
+}
+h1, h2 {
+  font-weight: bold;
+}
+a:hover {
+  color: #070;
+}
+ul {
+  list-style-type: none;
+}
+.url {
+  font-family: "Helvetica Neue";
+}
 
+h1 a {
+  text-decoration: none;
+}
+#body h2 {
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+#body p {
+  margin: 0.5em 0;
+}
+#body ul {
+  margin: 1em 2em;
+}
+#recent dl {
+  font-family: "Helvetica Neue";
+  margin: 0;
+  white-space: nowrap;
+}
+#recent dl dt {
+  font-size: 12px;
+  font-weight: normal;
+}
+#recent dl dd {
+  color: #aaa;
+  font-size: 10px;
+  margin-bottom: 0.25em;
+  margin-left: 1em;
+}
+#recent h2 {
+  border-bottom: 1px solid #ccc;
+  color: #aaa;
+  font-size: 16px;
+  font-weight: normal;
+  margin: 1em 0;
+  padding-bottom: 0.5em;
+  text-align: center;
+}
+#head {
+  border-bottom: 1px solid #ccc;
+}
+#foot {
+  border-top: 1px solid #ccc;
+  margin-top: 1em;
+  padding-top: 1em;
+}
+#foot p {
+  color: #aaa;
+  font-size: 12px;
+}
+#foot a {
+  color: #aaa;
+}
+#foot a:hover {
+  color: #000;
+}

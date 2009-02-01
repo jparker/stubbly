@@ -1,23 +1,11 @@
-!!! XML
-!!!
-%html{:xmlns => 'http://www.w3.org/1999/xhtml', :'xml-lang' => 'en', :lang => 'en'}
-  %head
-    %meta{:'http-equiv' => 'Content-Type', :content => 'text/html;charset=UTF-8'}
-    %title stubbly &ndash; itsy-bitsy teenie-weenie urls
-    = stylesheet_tag '/screen.css'
-    = stylesheet_tag '/print.css', :media => 'print'
-    /[if IE]
-      = stylesheet_tag '/ie.css'
-    = stylesheet_tag '/stubbly.css'
-  %body
-    .container
-      #hd.span-24
-        %h1 stubbly &ndash; itsty-bitsy teenie-weenie urls
-      #bd.span-24
-        %p
-          %strong.highlight= @stubble.url
-      #ft.span-24
-        %p
-          an
-          %a{:href => 'http://urgetopunt.com/'} urge|to|punt
-          technology
+- unless @stubble.new_record?
+  %p
+    Your new stubble is
+    %span.url= link_to('http://stubbly.local/' + @stubble.slug, @stubble.slug)
+  %p
+    The original URL was
+    %span.url= link_to(@stubble.url, @stubble.url)
+  %p
+    The stubble is
+    = '%.0f%%' % [100 - ("http://stubbly.local/#{@stubble.slug}".size.to_f / @stubble.url.size * 100)]
+    shorter than the original!
