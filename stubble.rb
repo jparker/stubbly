@@ -1,3 +1,4 @@
+require 'rubygems'
 require 'dm-core'
 require 'dm-timestamps'
 require 'dm-types'
