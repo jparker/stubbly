@@ -67,10 +67,14 @@ helpers do
   end
   
   def wrap(text, length = 72)
-    text.scan(/.{1,#{length}}/).map {|s| h(s) }.join('<br />')
+    text.to_s.scan(/.{1,#{length}}/).map {|s| h(s) }.join('<br />')
   end
   
   def truncate(text, length = 30)
     text.to_s.length <= length ? text.to_s : "#{text.to_s[0,length]}..."
+  end
+  
+  def numerify(n)
+    (n || 0).to_s.reverse.scan(/\d{1,3}/).join(',').reverse
   end
 end

@@ -52,8 +52,8 @@ class Stubble
     attribute_set(:id, id.to_s.to_base10)
   end
   
-  def stub_path
-    id
+  def stub_path(format = nil)
+    [id, format].compact.join('.')
   end
   
   def stub_url(base = 'http://s.urgetopunt.com/')

@@ -1,10 +1,13 @@
 - unless @stubble.new_record?
   %dl
     %dt Stubble
-    %dd= link_to h(@stubble.stub_url), @stubble.stub_url
+    %dd.url= link_to wrap(@stubble.stub_url), "/#{@stubble.stub_path}"
     
     %dt Original URL
-    %dd= link_to h(@stubble.url), @stubble.url
+    %dd.url= link_to wrap(@stubble.url), @stubble.url
     
     %dt Stubbliness
     %dd= '%.0f%% shorter' % @stubble.stubbliness
+    
+    %dt Hits
+    %dd= numerify(@stubble.view_count)

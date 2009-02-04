@@ -57,7 +57,7 @@ p.announce {
   margin-top: 0.5em;
   margin-bottom: 1em;
 }
-#body blockquote {
+#body blockquote, .url {
   font-family: 'andale mono', 'lucida console';
   font-size: 13px;
   font-style: normal;
