@@ -3,11 +3,17 @@ body {
   font-family: Georgia;
   font-size: 16px;
 }
+a:hover {
+  color: #070;
+}
+h1 {
+  text-align: center;
+}
 h1, h2 {
   font-weight: bold;
 }
-a:hover {
-  color: #070;
+h1 a {
+  text-decoration: none;
 }
 ul {
   list-style-type: none;
@@ -15,77 +21,75 @@ ul {
 .container {
   background-color: #fff;
   border: 2px solid #999;
-  padding: 2em;
+  padding: 1em 2em;
 }
-
-h1 a {
-  text-decoration: none;
+ul.errors {
+  background-color: #fcc;
+  border: 1px solid #a00;
+  color: #a00;
+  margin-left: 0;
+  padding: 1em;
 }
-#body h2 {
-  margin-top: 1em;
-  margin-bottom: 0.5em;
-}
-#body p {
-  margin: 0.5em 0;
-}
-#body ul {
-  margin: 1em 2em;
-}
-#body dl {
-  margin-top: 1em;
-}
-#body dt {
-  margin: 1em 0 0 0;
+p.announce {
+  background-color: #fcc;
+  border: 1px solid #a00;
+  color: #a00;
+  font-size: 18px;
+  line-height: 2em;
+  padding: 0.5em;
+  text-align: center;
 }
 #head {
   border-bottom: 1px solid #ccc;
+  margin-bottom: 1em;
 }
-#foot {
-  border-top: 1px solid #ccc;
-  margin-top: 1em;
-  padding-top: 1em;
-}
-#foot p {
-  color: #aaa;
-  font-size: 12px;
-}
-#foot a {
-  color: #aaa;
-}
-#foot a:hover {
-  color: #000;
-}
-#new-stubble {
+#head form {
   text-align: center;
 }
-#new-stubble input, #new-stubble button {
+#head input, #head button {
   font-size: 16px;
   padding: 0.25em;
 }
-#new-stubble input:focus {
-  background-color: #cdf;
+#body h2 {
+  margin-bottom: 0.5em;
 }
-#recent dl {
-  font-family: "Helvetica Neue";
-  margin: 0;
-  white-space: nowrap;
+#body p {
+  margin-top: 0.5em;
+  margin-bottom: 1em;
 }
-#recent dl dt {
+#body blockquote {
+  font-family: 'andale mono', 'lucida console';
+  font-size: 13px;
+  font-style: normal;
+}
+#side {
   font-size: 12px;
-  font-weight: normal;
 }
-#recent dl dd {
-  color: #aaa;
-  font-size: 10px;
-  margin-bottom: 0.25em;
-  margin-left: 1em;
-}
-#recent h2 {
+#side h2 {
   border-bottom: 1px solid #ccc;
-  color: #aaa;
+  color: #999;
   font-size: 16px;
+}
+#side dl {
+  font-family: "Helvetica Neue";
+}
+#side dt {
   font-weight: normal;
-  margin: 1em 0;
-  padding-bottom: 0.5em;
-  text-align: center;
+}
+#side dd {
+  color: #999;
+}
+#foot {
+  border-top: 1px solid #ccc;
+  font-size: 12px;
+  padding-top: 1em;
+}
+#foot p {
+  color: #999;
+}
+#foot a {
+  color: #999;
+}
+#foot a:hover {
+  color: #000;
 }

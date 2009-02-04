@@ -1,22 +1,14 @@
 %h2 What is Stubbly?
-%p
-  Stubbly generates conveniently short aliases for inconveniently
-  long URLs.
+%p Stubbly generates conveniently short aliases for inconveniently long URLs.
+%p It lets you turn URLs like this:
+%blockquote= wrap("http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=2+Grey+St,+Wellington,+6011,+New+Zealand&sll=32.725637,-117.170506&sspn=0.016228,0.017917&ie=UTF8&ll=-41.284668,174.77466&spn=0.007248,0.013036&t=h&z=17")
+%p into URLs like this:
+%blockquote http://s.urgetopunt.com/1
 %h2 Hasn&rsquo;t This Been Done?
 %p
-  Yes. Here&lsquo;s a few services that are older, wiser and better-looking:
+  Yes. Here&rsquo;s a few services that are older and wiser and work better:
 %ul
   %li= link_to 'tinyurl.com', 'http://tinyurl.com/'
   %li= link_to 'rubyurl.com', 'http://rubyurl.com/'
   %li= link_to 'bit.ly', 'http://bit.ly/'
   %li= link_to 'is.gd', 'http://is.gd/'
-%h2 What Powers Stubbly?
-%ul
-  %li= link_to 'Sinatra', 'http://sinatra.rubyforge.org/'
-  %li= link_to 'DataMapper', 'http://datamapper.org/'
-  %li= link_to 'MySQL', 'http://www.mysql.com/'
-  %li= link_to 'Apache', 'http://httpd.apache.org/'
-  %li= link_to 'Passenger', 'http://www.phusion.nl/'
-%p
-  Stubbly is open source. The code is available on
-  = link_to('Github', 'http://github.com/jparker/stubbly/') + '.'

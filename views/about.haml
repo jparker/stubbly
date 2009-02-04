@@ -1,9 +1,24 @@
-%h2 Terms of Service
-%p Stubbly is a free service provided without warranty of any kind.
-%p Stubbly may not be used in unsolicited advertising (spam) or to link to any content which is illegal. Stubbles found to be in violation of this policy may be deleted at any time.
-%p We reserve the right to delete, at our sole discretion, any shortened URLs at any time and without prior warning. We reserve the right to discontinue this service at any time and without prior warning.
-
-%h2 Privacy Policy
-%p This application stores all user-submitted URLs. These URLs are considered inherently public, and as such, are viewable by anyone.
-%p We may also store the IP addresses of computers accessing this site solely for the purposes of preventing abuse as well as observing and analyzing anonymous usage trends. We will not share this information with third parties.
+%h2 How Does it Work?
+%p
+  When you paste an arbitrary URL into Stubbly, it generates a unique identifier. Appending
+  that unique identifier to the base URL gives a &ldquo;stubble&rdquo; such as:
+%blockquote http://s.urgetopunt.com/YH
+%p
+  You can also append
+  %code .html
+  to the stubble to see a page containing information about the original site, including
+  the original URL. This can be helpful if you want people to see where they&rsquo;re going before
+  they get there.
+%blockquote http://s.urgetopunt.com/YH.html
+%h2 What Powers Stubbly?
+%p
+  Stubbly was built using
+  = link_to('Ruby', 'http://www.ruby-lang.org/'), ','
+  = link_to('Sinatra', 'http://sinatra.rubyforge.org/') + ','
+  = link_to('DataMapper', 'http://datamapper.org/') + ','
+  = link_to('Passenger', 'http://www.phusion.nl/')
+  and
+  = link_to('MySQL', 'http://www.mysql.com/') + '.'
+  Stubbly is open source, and the source code is available on
+  = link_to('Github', 'http://github.com/jparker/stubbly/') + '.'
   

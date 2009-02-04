@@ -24,20 +24,30 @@ get '/about.html' do
   haml :about
 end
 
-get '/:slug' do
-  @stubble = Stubble.get_by_slug!(params[:slug])
-  @stubble.url
+get '/tos.html' do
+  haml :tos
 end
 
-get '/:slug.html' do
-  @stubble = Stubble.get_by_slug!(params[:slug])
+get '/:id' do
+  @stubble = Stubble.get!(params[:id])
+  @stubble.count!
+  redirect @stubble.url.to_s
+end
+
+get '/:id.html' do
+  @stubble = Stubble.get!(params[:id])
+  @stubble.count!
   haml :show
 end
 
 post '/' do
-  @stubble = Stubble.new(:url => params[:url])
-  @stubble.save
-  redirect "/#{@stubble.slug}.html"
+  attrs = {:url => params[:url], :created_from => request.env['REMOTE_ADDR']}
+  @stubble = Stubble.new(attrs)
+  if @stubble.save
+    redirect "#{@stubble.stub_path}.html"
+  else
+    haml :fail
+  end
 end
 
 helpers do
@@ -53,14 +63,14 @@ helpers do
   end
   
   def h(text)
-    CGI::escapeHTML(text)
-  end
-  
-  def truncate(text, length = 30)
-    text.length <= length ? text : "#{text[0,length]}..."
+    CGI::escapeHTML(text.to_s)
   end
   
   def wrap(text, length = 72)
-    text.scan(/.{1,length}/).join('&nbsp;')
+    text.scan(/.{1,#{length}}/).map {|s| h(s) }.join('<br />')
+  end
+  
+  def truncate(text, length = 30)
+    text.to_s.length <= length ? text.to_s : "#{text.to_s[0,length]}..."
   end
 end

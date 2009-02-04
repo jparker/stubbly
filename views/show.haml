@@ -1,7 +1,7 @@
 - unless @stubble.new_record?
   %dl
     %dt Stubble
-    %dd= link_to h("http://stubbly.local/#{@stubble.slug}"), @stubble.slug
+    %dd= link_to h(@stubble.stub_url), @stubble.stub_url
     
     %dt Original URL
     %dd= link_to h(@stubble.url), @stubble.url
