@@ -44,7 +44,7 @@ post '/' do
   attrs = {:url => params[:url], :created_from => request.env['REMOTE_ADDR']}
   @stubble = Stubble.new(attrs)
   if @stubble.save
-    redirect "#{@stubble.stub_path}.html"
+    redirect stubble_url(@stubble, :html)
   else
     haml :fail
   end
