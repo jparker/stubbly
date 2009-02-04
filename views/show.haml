@@ -1,7 +1,9 @@
 - unless @stubble.new_record?
   %dl
     %dt Stubble
-    %dd.url= link_to wrap(@stubble.stub_url), "/#{@stubble.stub_path}"
+    %dd.url
+      = link_to wrap(@stubble.stub_url), "/#{@stubble.stub_path}"
+      = "[#{@stubble.url.host}]"
     
     %dt Original URL
     %dd.url= link_to wrap(@stubble.url), @stubble.url
