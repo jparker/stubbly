@@ -77,4 +77,23 @@ helpers do
   def numerify(n)
     (n || 0).to_s.reverse.scan(/\d{1,3}/).join(',').reverse
   end
+  
+  def stubble_path(stubble, format = nil)
+    path = "/#{stubble.id}"
+    [path, format].compact.join('.')
+  end
+  
+  def stubble_url(stubble, format = nil)
+    path = stubble_path(stubble, format)
+    
+    case ENV['RACK_ENV']
+    when 'production'
+      # "http://stubb.ly#{path}"
+      "http://s.urgetopunt.com#{path}"
+    when 'test'
+      "http://test.host#{path}"
+    else
+      "http://stubbly.local#{path}"
+    end
+  end
 end

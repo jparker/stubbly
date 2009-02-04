@@ -29,16 +29,16 @@
             %h2 Recent Stubbles
             %dl
               - @stubbles.each do |stubble|
-                %dt= link_to CGI::escapeHTML(truncate(stubble.url, 42)), "/#{stubble.stub_path(:html)}", :title => 'Click to see preview'
+                %dt= link_to CGI::escapeHTML(truncate(stubble.url, 42)), stubble_path(stubble, :html), :title => 'Click to see preview'
                 %dd= stubble.created_at.strftime('%c')
       #foot.span-24
         %p
           an
           = link_to 'urge|to|punt', 'http://urgetopunt.com/'
           technology |
-          = link_to 'About', '/about.html'
+          = link_to 'about', '/about.html'
           |
-          = link_to 'Terms of Service', '/tos.html'
+          = link_to 'terms of service', '/tos.html'
           | &copy;
           = Date.today.year
           John Parker

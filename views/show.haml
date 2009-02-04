@@ -2,14 +2,14 @@
   %dl
     %dt Stubble
     %dd.url
-      = link_to wrap(@stubble.stub_url), "/#{@stubble.stub_path}"
-      = "[#{@stubble.url.host}]"
+      = link_to wrap(stubble_url(@stubble)), stubble_path(@stubble)
+      = "[#{h @stubble.url.host}]"
     
     %dt Original URL
     %dd.url= link_to wrap(@stubble.url), @stubble.url
     
     %dt Stubbliness
-    %dd= '%.0f%% shorter' % @stubble.stubbliness
+    %dd= '%.0f%%' % @stubble.stubbliness
     
     %dt Hits
     %dd= numerify(@stubble.view_count)

@@ -1,6 +1,6 @@
 %h2 Oops!
 %p We were unable to create a stubble for the following reason(s):
 %ul.errors
-  - @stubble.errors.each do |error|
-    %li= h(error)
+  - @stubble.errors.on(:url).each do |error|
+    %li= h(error) + '.'
     

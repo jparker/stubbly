@@ -1,26 +1,27 @@
-module Sluggish
-  DIGITS = ('0'..'9').to_a + ('a'..'z').to_a + ('A'..'Z').to_a + %w(- _)
-end
-
-class Fixnum
-  def to_base64
-    raise "can't convert to base64 (#{self.inspect} < 0)" if self < 0
-    s, n = '', self
+class Numeric
+  @@digits = ('0'..'9').to_a + ('a'..'z').to_a + ('A'..'Z').to_a + %w(- _)
+  
+  def to_base(base)
+    raise "can't convert negative numbers (#{self.inspect})" if self < 0
+    
+    encoded, n = '', self
     while n != 0
-      s << Sluggish::DIGITS[n % 64]
-      n /= 64
+      encoded << @@digits[0, base][n % base]
+      n /= base
     end
-    s.reverse
+    encoded.reverse
   end
 end
 
 class String
-  def to_base10
-    p = -1
-    scan(/./).reverse.inject(0) do |n, chr|
-      n  += Sluggish::DIGITS.index(chr) * 64 ** (p += 1)
+  @@digits = ('0'..'9').to_a + ('a'..'z').to_a + ('A'..'Z').to_a + %w(- _)
+  
+  def from_base(base)
+    pow = -1
+    scan(/./).reverse.inject(0) do |n, char|
+      n += @@digits[0, base].index(char) * base ** (pow += 1)
     end
   rescue
-    raise "can't convert from base64 (#{self.inspect})"
+    raise "can't convert number (#{self.inspect})"
   end
 end
