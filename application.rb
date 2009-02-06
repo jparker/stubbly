@@ -36,7 +36,6 @@ end
 
 get '/:id.html' do
   @stubble = Stubble.get!(params[:id])
-  @stubble.count!
   haml :show
 end
 
