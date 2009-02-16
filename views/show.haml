@@ -2,7 +2,7 @@
   %dl
     %dt Stubble
     %dd.url
-      = link_to wrap(stubble_url(@stubble)), stubble_path(@stubble)
+      = '&lt;URL:' + link_to(wrap(stubble_url(@stubble)), stubble_path(@stubble)) + '&gt;'
       = "[#{h @stubble.url.host}]"
     
     %dt Original URL
