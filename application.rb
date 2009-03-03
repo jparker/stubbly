@@ -41,6 +41,7 @@ end
 
 post '/' do
   if request.env['HTTP_USER_AGENT'] =~ /MSIE/
+    status 403
     haml :oops
   else
     attrs = {:url => params[:url], :created_from => request.env['REMOTE_ADDR']}
@@ -48,6 +49,7 @@ post '/' do
     if @stubble.save
       redirect stubble_url(@stubble, :html)
     else
+      status 422
       haml :fail
     end
   end
