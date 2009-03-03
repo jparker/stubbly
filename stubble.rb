@@ -16,13 +16,18 @@ class Stubble
   include DataMapper::Resource
   
   @@blacklist = %r{\A .* (?:
+      # ourselves
       stubbly\.local      |
       stubb\.ly           |
       s\.urgetopunt\.com  |
+      # other url shorteners
       tinyurl\.com        |
       rubyurl\.com        |
       bit\.ly             |
       is\.gd              |
+      # spammers
+      [[:alnum:]]+\.blogspot\.com |
+      # obvious bogons
       localhost           |
       127\.0\.0\.1
     ) \Z
