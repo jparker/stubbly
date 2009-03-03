@@ -40,12 +40,16 @@ get '/:id.html' do
 end
 
 post '/' do
-  attrs = {:url => params[:url], :created_from => request.env['REMOTE_ADDR']}
-  @stubble = Stubble.new(attrs)
-  if @stubble.save
-    redirect stubble_url(@stubble, :html)
+  if request.env['HTTP_USER_AGENT'] =~ /MSIE/
+    haml :oops
   else
-    haml :fail
+    attrs = {:url => params[:url], :created_from => request.env['REMOTE_ADDR']}
+    @stubble = Stubble.new(attrs)
+    if @stubble.save
+      redirect stubble_url(@stubble, :html)
+    else
+      haml :fail
+    end
   end
 end
 
